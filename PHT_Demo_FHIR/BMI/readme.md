@@ -1,3 +1,5 @@
+# Body Mass Index (BMI) calculation on FHIR 
+
 ## Repository
 This repository is structured into two different folders:
 - Client (web-app): Can be used for composing the pnenotype algorithm, packaging, shipping, train monitoring, result receive and visualization. The web-app can be accessed at http://menzel.informatik.rwth-aachen.de:3000/login. You need to register first. Then you'll be able to enjoy the features.  
@@ -24,4 +26,7 @@ We plan to provide more details and full automated way to run this demo so that:
 - Then the handler (station) gets notified automatically (well, the routing module schedules it, though). 
 - The train gets executed at the startion, send the result back to the client on the web-app result service endpoint. 
 - Additionally, the handling station pushes the updated image to the Docker registry. 
+
+## Developing a FHIR client
+We plan to develop a web application for easy query FHIR server instead of a manual one shown in the notebook. We plan to extend the "SMART on FHIR client" (https://github.com/smart-on-fhir/client-py) for that.
 
