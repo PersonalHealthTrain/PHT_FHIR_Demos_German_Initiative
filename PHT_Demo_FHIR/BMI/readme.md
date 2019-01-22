@@ -14,6 +14,8 @@ This repository is structured into two different folders:
     Handling station: PHT station runtime, where all the data retreival and computations happen. 
     Sample CQL input: see Input.cql file shows a CQL expression, which will filter all the patient whose are over 50 kg and height is 45 inch. 
     
+## Video demo
+A video demo shwoing all the steps can be found at this link: https://drive.google.com/file/d/1lMn5kj8fmdkLy9iZ653mle3MuunDLVVf/view
 ## Interactive notebook
 Querying_FHIR_server_with_CQL_expression_and_compute_BMI.ipynb can be executed to run the PHT BMI counter. This will:
 
