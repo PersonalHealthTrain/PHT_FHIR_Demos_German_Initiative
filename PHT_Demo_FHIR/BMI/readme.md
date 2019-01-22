@@ -17,11 +17,16 @@ This repository is structured into two different folders:
 ## Interactive notebook
 Querying_FHIR_server_with_CQL_expression_and_compute_BMI.ipynb can be executed to run the PHT BMI counter. This will:
 
--- query a FHIR server (containing 65 patients records in FHIR standard), 
--- pull the FHIR resource bundle, 
--- performs some minor preprocessing and 
--- finally compute the BMI of each patient that satisfy filtering criteria in the CQL query file (see Input.cql file). 
+    Queries a FHIR server (containing 65 patients records in FHIR standard). For this, we use our own FHIR server hosted at http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/, 
+    Pulls the FHIR resource bundle, 
+    Performs some minor preprocessing and 
+    Finally compute the BMI of each patient that satisfy filtering criteria in the CQL query file (see Input.cql file). 
 
-## Updates
-We plan to provide more details and full automated way to run this demo so that client can define the phenotype algorithm from a web-app, ship the package to be pushed to the Docker registry. Then the handler (station) gets notified automatically (well, the routing module schedules it, though). The train gets executed at the startion, send the result back to the client on the web-app result service endpoint. Additionally, the handling station pushes the updated image to the Docker registry. 
+## Up next
+We plan to provide more details and full automated way to run this demo so that:
+    The client can define the phenotype algorithm from a web-app, 
+    Ships the package to be pushed to the Docker registry. 
+    Then the handler (station) gets notified automatically (well, the routing module schedules it, though). 
+    The train gets executed at the startion, send the result back to the client on the web-app result service endpoint. 
+    Additionally, the handling station pushes the updated image to the Docker registry. 
 
