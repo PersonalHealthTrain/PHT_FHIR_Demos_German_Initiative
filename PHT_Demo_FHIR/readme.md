@@ -6,4 +6,4 @@ The basic workflow of Personal Health Train is to share analytics algorithm inst
 - We don't need to transfer data back-forth over the network (or by any means), hence the overall pipleline ensures the preserving patients' privacy
 - Only the results are back to the client for visual analytics
 - The handler stations updates the train registry with the latest image
-- Most importantly, we aim at supporting different data representation (FHIR, RDF) and query standards (CQL, CQL) as applications/calculations at the source can perform the conversion/transformation. 
+- Most importantly, we aim at supporting different data representation in FHIR and query standards in CQL as applications/calculations at the source can perform the conversion/transformation. 
