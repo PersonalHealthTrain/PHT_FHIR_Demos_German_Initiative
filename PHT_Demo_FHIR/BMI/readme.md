@@ -24,6 +24,7 @@ Querying_FHIR_server_with_CQL_expression_and_compute_BMI.ipynb can be executed t
 
 ## Up next
 We plan to provide more details and full automated way to run this demo so that:
+
     The client can define the phenotype algorithm from a web-app, 
     Ships the package to be pushed to the Docker registry. 
     Then the handler (station) gets notified automatically (well, the routing module schedules it, though). 
