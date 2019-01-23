@@ -1,14 +1,14 @@
 # Body Mass Index (BMI) calculation on FHIR 
 
-## Repository
+## Components of PHT
 This repository is structured into two different folders:
-- Client (web-app): Can be used for composing the pnenotype algorithm, packaging, shipping, train monitoring, result receive and visualization. The web-app can be accessed at http://menzel.informatik.rwth-aachen.de:3000/login. You need to register first. Then you'll be able to enjoy the features.  
-- Docker registry: for hosting the train and updaing their status, which can be accessed at http://menzel.informatik.rwth-aachen.de:3005
-- Routing module: make sure each trains dispatches to the handling station smoothly
-- Handling station: PHT station runtime, where all the data retreival and computations happen. 
-- CQL evaluation engine: used to evaluate and validate CQL query expression on the client-side (web app) before shippin. This service is hosted at http://menzel.informatik.rwth-aachen.de:8082/ but available only for GET method. 
-- Sample CQL input: see Input.cql file shows a CQL expression, which will filter all the patient whose are over 50 kg and height is 45 inch. 
+- **Web app**: Can be used for composing the pnenotype algorithm, packaging, shipping, train monitoring, result receive and visualization. The web-app can be accessed at http://menzel.informatik.rwth-aachen.de:3000/login. You need to register first. Then you'll be able to enjoy the features.  
+- **Docker registry**: for hosting the train and updaing their status, which can be accessed at http://menzel.informatik.rwth-aachen.de:3005
+- **Routing module**: make sure each trains dispatches to the handling station smoothly
+- **Handler/Station**: PHT station runtime, where all the data retreival and computations happen. There should have FHIR server endpoint and terminology server configured at the station. In our implementation, http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/ acts as both. 
+- **CQL evaluation engine**: used to evaluate and validate CQL query expression on the client-side (web app) before shippin. This service is hosted at http://menzel.informatik.rwth-aachen.de:8082/ but available only for GET method. 
 
+## Workflow: 
 Take a look at the below workflow to get an overall idea: 
 ![alt text](Capture.PNG)
    
@@ -32,4 +32,3 @@ We plan to provide more details and full automated way to run this demo so that:
 
 ## Developing a FHIR client
 We plan to develop a web application for easy query FHIR server instead of a manual one shown in the notebook. We plan to extend the "SMART on FHIR client" (https://github.com/smart-on-fhir/client-py) for that.
-
