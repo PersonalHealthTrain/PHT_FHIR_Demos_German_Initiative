@@ -10,7 +10,7 @@ This repository is structured into two different folders:
 
 Take a look at the below workflow to get an overall idea: 
 
-![PHT] (Capture.PNG)
+![alt text] (https://github.com/PersonalHealthTrain/PHT_FHIR_Demos_German_Initiative/blob/master/PHT_Demo_FHIR/BMI/Capture.PNG)
     
 ## Video demo
 A video demo showing all the steps can be found at this link: 
