@@ -10,7 +10,7 @@ This repository is structured into two different folders:
 
 Take a look at the below workflow to get an overall idea: 
 
-![Capture.PNG]
+!(Capture.PNG)
     
 ## Video demo
 A video demo showing all the steps can be found at this link: 
