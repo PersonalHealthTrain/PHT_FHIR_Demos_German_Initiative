@@ -1,7 +1,7 @@
 # Body Mass Index (BMI) calculation on FHIR 
 
 ## Components of PHT
-This repository is structured into two different folders:
+Folloing are the main components in our FHIR-based implementation of PHT:
 - **Web app**: Can be used for composing the pnenotype algorithm, packaging, shipping, train monitoring, result receive and visualization. The web-app can be accessed at http://menzel.informatik.rwth-aachen.de:3000/login. You need to register first. Then you'll be able to enjoy the features.  
 - **Docker registry**: for hosting the train and updaing their status, which can be accessed at http://menzel.informatik.rwth-aachen.de:3005
 - **Routing module**: make sure each trains dispatches to the handling station smoothly
