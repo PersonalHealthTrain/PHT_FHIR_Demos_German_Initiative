@@ -7,6 +7,10 @@ This repository is structured into two different folders:
 - Routing module': make sure each trains dispatches to the handling station smoothly
 - Handling station: PHT station runtime, where all the data retreival and computations happen. 
 - Sample CQL input: see Input.cql file shows a CQL expression, which will filter all the patient whose are over 50 kg and height is 45 inch. 
+
+Take a look at the below workflow to get an overall idea: 
+
+[alt text](Capture.PNG)
     
 ## Video demo
 A video demo showing all the steps can be found at this link: 
