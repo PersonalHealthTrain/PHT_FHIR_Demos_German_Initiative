@@ -1,0 +1,53 @@
+How to configure a PHT station?
+Make sure hat Java is installed on configured. Then install gradale. Just follow these instructions:
+i) sudo add-apt-repository ppa:cwchien/gradle
+ii) sudo apt-get update
+iii) sudo apt-get install gradle
+
+Finally, see the gradle version using '$ gradle --version'
+
+Step 1: You need to install gradle in at least version 4, since currently you need to build the application. But make sure Java is installed and configured. 
+
+Step 2: You need to install the library : https://github.com/PersonalHealthTrain/library.git 
+        locally, with: sudo gradle publishToMavenLocal
+		
+Step 3: You need to install the Docker Client Implementation that the station uses: https://github.com/PersonalHealthTrain/docker-client-implementation.git 		
+        again using: gradle publishToMavenLocal
+		
+Step 4: You get the station application: https://github.com/PersonalHealthTrain/station.git
+        Build it using: gradle build. Then 	Then there is gonna be a .jar file in build/libs which you have to run using: java -jar but before that see below
+		
+The station is programmed in such a way that it will fetch all the trains it has not executed yet and try to  process them. If a train fails, it will just be removed and retried
+
+Further requirements: You need Docker and use docker login again to connect to the registry. Install the docker and do the following:
+
+asif@ubuntu:~$ sudo docker login 193.196.20.88:3000
+
+[sudo] password for asif: 
+Username: rezacsedu
+Password: 
+Error response from daemon: Get https://193.196.20.88:3000/v1/users/: net/http: TLS handshake timeout	
+	
+$ sudo vim etc/docker/daemon.json
+Add the following contents:
+{                             
+     "insecure-registries" : ["http://menzel.informatik.rwth-aachen.de:9191" ]
+}
+Then  sudo systemctl restart docker
+
+The station needs to authenticate at two points independently, I plan to refactor this, but this is the current state
+Login $ sudo docker login 193.196.20.88:9191
+User: rezacsedu
+Pass: rezapassword
+
+asif@ubuntu:~/bmi2/dummy$ sudo docker pull 193.196.20.88:9191/personalhealthtrain/train_package_5b83d2612a282a001ccabad_tar:11: Pulling from personalhealthtrain/train_package_5b83d2612a282a001ccabad_tar
+Digest: sha256:0d0707923d10dfaa8639d2fe93846aaf1e5403e23f90c8e17e8b729bea13728d
+Status: Image is up to date for 193.196.20.88:9191/personalhealthtrain/train_package_5b83d2612a282a001ccabad_tar:1
+asif@ubuntu:~/bmi2/dummy$ sudo docker run 193.196.20.88:9191/personalhealthtrain/train_package_5b83d2612a282a001ccabad_tar:1  --stationid 1 print_summary
+/pht_train/arm1.cql
+station_1.csv
+-----------
+PID,BMI
+1520204,28.6
+1540505,71.4
+1551992,36.6

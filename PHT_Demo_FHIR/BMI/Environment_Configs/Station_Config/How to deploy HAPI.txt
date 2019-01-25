@@ -1,0 +1,58 @@
+To have one FHIR server up and running, you need to do following steps:
+1. get the source code from our project FHIR_UseCase/hapi-fhir-jpaserver
+2. Then configure Java on your machine. You the following steps for that:
+$ sudo apt-get install python-software-properties
+$ sudo apt-get update
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+
+Then, depending on the version you want to install, execute one of the following commands:
+
+$ sudo apt-get install oracle-java8-installer
+
+After installing, don't forget to set Java home. Just apply below commands (we assume Java is installed at /usr/lib/jvm/java-8-oracle):
+$ echo "export JAVA_HOME=/usr/lib/jvm/java-8-oracle" >> ~/.bashrc  
+$ echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bashrc
+$ source ~/.bashrc
+
+Now let's see the Java_HOME as follows: 
+$ echo $JAVA_HOME
+
+Now you should observe the following result on Terminal: 
+/usr/lib/jvm/java-8-oracle
+
+3. Go to hapi-fhir-jpaserver folder and the run cmd "sudo mvn package" to package the WAR file in the target folder
+4. Then install docker following below steps:
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+- sudo apt-get update
+- apt-cache policy docker-ce
+- sudo apt-get install -y docker-ce
+- sudo systemctl status docker
+
+5. First generate the war file from the code on Gitlab ('hapi-fhir-jpaserver') using 'sudo mvn package'. Then change the WAR file name to root.war and copy it to /root/jetty/webapps/ folder
+6. Then the FHIR server is ready at {server address}:8080/baseDstu3. See patient info at {server address}:8080/baseDstu3/Patient -e.g. http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/Patient
+7. run cmd "docker run -d -v /home/karim/jetty/webapps/:/var/lib/jetty/webapps/ --name hapi-fhir -p 8080:8080 jetty:9-jre8-alpine" on the server you want to setup an FHIR server
+
+8. Uploading FHIR resource bundles and updated value sets: To upload the sample fhir data, you can use tag-uploader tool ($ git clone https://github.com/smart-on-fhir/tag-uploader). 
+You can read the README text to know how to upload the data to server. In short, you can run this cmd by replacing the folder path and server url.
+node . -d {folder path/sample data} -S http://localhost:8080/baseDstu3
+ 
+Important note: For this, you also need to install ndejs >=10. Use the following command for that: 
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+Then execute the following command to upload FHIR resources (i.e. data). By the way, get it from Gitlab as well ('/home/karim/resources'): 
+node . -d /home/karim/out1/ -S http://menzel.informatik.rwth-aachen.de:8080/baseDstu3
+
+Then execute the following command to upload FHIR resources (i.e. updated valuesets): 
+node . -d /home/karim/resources/ -S http://menzel.informatik.rwth-aachen.de:8080/baseDstu3
+
+However, this might show an issue with 'colors' package, which subsequetly can be installed using 'npm install colors', which again has dependency with the following:
+
+$ sudo npm audit fix --force
+$ sudo npm install colors
+
+9. 
+http://jsonviewer.stack.hu
+sudo docker run -d -v /home/karim/jetty/cql/:/var/lib/jetty/webapps/ --name cql -p 8082:8080 jetty:9-jre8-alpine
