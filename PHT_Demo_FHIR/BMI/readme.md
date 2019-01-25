@@ -4,8 +4,8 @@
 Folloing are the main components in our FHIR-based implementation of PHT:
 - **Web app**: Can be used for composing the pnenotype algorithm, packaging, shipping, train monitoring, result receive and visualization. The web-app can be accessed at http://menzel.informatik.rwth-aachen.de:3000/login. You need to register first. Then you'll be able to enjoy the features.  
 - **Docker registry**: for hosting the train and updaing their status, which can be accessed at http://menzel.informatik.rwth-aachen.de:3005
-- **Routing module**: make sure each trains dispatches to the handling station smoothly
-- **Handler/Station**: PHT station runtime, where all the data retreival and computations happen. There should have FHIR server endpoint and terminology server configured at the station. In our implementation, http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/ acts as both. 
+- **(Handler)Routing module**: make sure each trains dispatches to the handling station smoothly
+- **Station**: PHT station runtime, where all the data retreival and computations happen. There should have FHIR server endpoint and terminology server configured at the station. In our implementation, http://menzel.informatik.rwth-aachen.de:8080/baseDstu3/ acts as both. 
 - **CQL evaluation engine**: used to evaluate and validate CQL query expression on the client-side (web app) before shippin. This service is hosted at http://menzel.informatik.rwth-aachen.de:8082/ but available only for GET method. 
 
 ## Workflow: 
